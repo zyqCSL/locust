@@ -21,7 +21,7 @@ addons:
 install:
   - pip install tox codecov
 script:
-  - tox -e py37
+  - tox
 after_success:
   - codecov -e TOXENV
 deploy:
