@@ -21,7 +21,7 @@ addons:
 install:
   - pip install tox codecov
 script:
-  - tox
+  - while $(python -m unittest locust.test.test_web.TestWebUI.test_stats); do :; done
 after_success:
   - codecov -e TOXENV
 deploy:
