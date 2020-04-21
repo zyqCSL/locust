@@ -58,15 +58,6 @@ def task(weight=1):
         return decorator_func
 
 
-class NoClientWarningRaiser(object):
-    """
-    The purpose of this class is to emit a sensible error message for old test scripts that 
-    inherit from Locust, and expects there to be an HTTP client under the client attribute.
-    """
-    def __getattr__(self, _):
-        raise LocustError("No client instantiated. Did you intend to inherit from HttpLocust?")
-
-
 def get_tasks_from_base_classes(bases, class_dict):
     """
     Function used by both TaskSetMeta and LocustMeta for collecting all declared tasks 
@@ -455,7 +446,7 @@ class Locust(object, metaclass=LocustMeta):
     abstract = True
     """If abstract is True, the class is meant to be subclassed, and users will not choose this locust during a test"""
     
-    client = NoClientWarningRaiser()
+    client = None
     _state = None
     _greenlet = None
     _taskset_instance = None
