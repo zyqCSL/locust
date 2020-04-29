@@ -233,7 +233,7 @@ class StatsEntry(object):
     OrderedDict that holds a copy of the response_times dict for each of the last 20 seconds.
     """
     
-    total_content_length = None
+    total_content_length = 0
     """ The sum of the content length of all the requests for this entry """
     
     start_time = None

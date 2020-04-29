@@ -7,14 +7,13 @@ import sys
 from setuptools import find_packages, setup
 
 # parse version from locust/__init__.py
-_version_re = re.compile(r'__version__\s+=\s+(.*)')
+_version_re = re.compile(r"__version__\s+=\s+(.*)")
 _init_file = os.path.join(os.path.abspath(os.path.dirname(__file__)), "locust", "__init__.py")
-with open(_init_file, 'rb') as f:
-    version = str(ast.literal_eval(_version_re.search(
-        f.read().decode('utf-8')).group(1)))
+with open(_init_file, "rb") as f:
+    version = str(ast.literal_eval(_version_re.search(f.read().decode("utf-8")).group(1)))
 
 setup(
-    name='locustio',
+    name="locustio",
     version=version,
     description="Website load testing framework",
     long_description="""Locust is a python utility for doing easy, distributed load testing of a web site""",
@@ -31,31 +30,28 @@ setup(
         "Intended Audience :: Developers",
         "Intended Audience :: System Administrators",
     ],
-    keywords='',
-    author='Jonatan Heyman, Carl Bystrom, Joakim Hamrén, Hugo Heyman',
-    author_email='',
-    url='https://locust.io/',
-    license='MIT',
-    packages=find_packages(exclude=['examples', 'tests']),
+    keywords="",
+    author="Jonatan Heyman, Carl Bystrom, Joakim Hamrén, Hugo Heyman",
+    author_email="",
+    url="https://locust.io/",
+    license="MIT",
+    packages=find_packages(exclude=["examples", "tests"]),
+    package_data={"locust": ["py.typed"], "locust-plugins": ["py.typed"]},
     include_package_data=True,
     zip_safe=False,
     python_requires=">=3.6",
     install_requires=[
         "gevent==1.5.0",
-        "flask>=0.10.1", 
-        "requests>=2.9.1", 
-        "msgpack>=0.6.2", 
-        "pyzmq>=16.0.2", 
+        "flask>=0.10.1",
+        "requests>=2.9.1",
+        "msgpack>=0.6.2",
+        "pyzmq>=16.0.2",
         "geventhttpclient-wheels==1.3.1.dev3",
         "ConfigArgParse>=1.0",
         "psutil>=5.6.7",
-        "Flask-BasicAuth==0.2.0"
+        "Flask-BasicAuth==0.2.0",
     ],
     test_suite="locust.test",
-    tests_require=['mock'],
-    entry_points={
-        'console_scripts': [
-            'locust = locust.main:main',
-        ]
-    },    
+    tests_require=["mock"],
+    entry_points={"console_scripts": ["locust = locust.main:main",]},
 )

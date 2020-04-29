@@ -3,7 +3,7 @@ import random
 import sys
 import traceback
 from time import time
-
+from typing import Any
 import gevent
 from gevent import GreenletExit, monkey
 
@@ -446,7 +446,7 @@ class Locust(object, metaclass=LocustMeta):
     abstract = True
     """If abstract is True, the class is meant to be subclassed, and users will not choose this locust during a test"""
     
-    client = None
+    client: Any = None
     _state = None
     _greenlet = None
     _taskset_instance = None
@@ -544,7 +544,7 @@ class HttpLocust(Locust):
     abstract = True
     """If abstract is True, the class is meant to be subclassed, and users will not choose this locust during a test"""
     
-    client = None
+    client: HttpSession = None
     """
     Instance of HttpSession that is created upon instantiation of Locust. 
     The client supports cookies, and therefore keeps the session between HTTP requests.

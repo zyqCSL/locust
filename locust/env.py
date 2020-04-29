@@ -1,30 +1,31 @@
 from .event import Events
 from .exception import RunnerAlreadyExistsError
 from .stats import RequestStats
-from .runners import LocalLocustRunner, MasterLocustRunner, WorkerLocustRunner
+from .runners import LocalLocustRunner, MasterLocustRunner, WorkerLocustRunner, LocustRunner
 from .web import WebUI
-
+from .core import Locust
+from typing import List, Optional
 
 class Environment:
-    events = None
+    events: Events = None # type: ignore
     """
     Event hooks used by Locust internally, as well as to extend Locust's functionality
     See :ref:`events` for available events.
     """
     
-    locust_classes = []
+    locust_classes: List[Locust] = []
     """Locust User classes that the runner will run"""
     
-    stats = None
+    stats: Optional[RequestStats] = None
     """Reference to RequestStats instance"""
     
-    runner = None
+    runner: Optional[LocustRunner] = None
     """Reference to the :class:`LocustRunner <locust.runners.LocustRunner>` instance"""
     
-    web_ui = None
+    web_ui: Optional[WebUI] = None
     """Reference to the WebUI instance"""
     
-    host = None
+    host: Optional[str] = None
     """Base URL of the target system"""
     
     reset_stats = False
@@ -35,7 +36,7 @@ class Environment:
     
     stop_timeout = None
     """
-    If set, the runner will try to stop the runnning users gracefully and wait this many seconds 
+    If set, the runner will try to stop the runnning users gracefully and wait this many seconds
     before killing them hard.
     """
     
