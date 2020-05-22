@@ -24,9 +24,9 @@ class PostInstallCommand(install):
     def run(self):
         sys.exit("\n**** Locust package has moved from 'locustio' to 'locust'. Please update your reference (or pin your version to 0.14.6 if you dont want to update to 1.0) ****\n")
 
-# class PostEggInfoCommand(egg_info):
-#     def run(self):
-#         sys.exit("\n**** Locust package has moved from 'locustio' to 'locust'. Please update your reference (or pin your version to 0.14.6 if you dont want to update to 1.0) ****\n")
+class PostEggInfoCommand(egg_info):
+    def run(self):
+        sys.exit("\n**** Locust package has moved from 'locustio' to 'locust'. Please update your reference (or pin your version to 0.14.6 if you dont want to update to 1.0) ****\n")
 
 setup(
     name='locustio',

@@ -12,7 +12,7 @@ from .user.wait_time import between, constant, constant_pacing
 from .event import Events
 events = Events()
 
-__version__ = "0.99"
+__version__ = "0.999"
 __all__ = (
     "SequentialTaskSet",
     "wait_time",
